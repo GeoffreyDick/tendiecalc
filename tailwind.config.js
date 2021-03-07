@@ -20,6 +20,10 @@ module.exports = {
 	},
 	darkMode: "class",
 	theme: {
+		container: {
+			center: true,
+			padding: "2rem",
+		},
 		extend: {
 			colors: {
 				dark: "#161615",
