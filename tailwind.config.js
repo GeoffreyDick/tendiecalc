@@ -27,6 +27,7 @@ module.exports = {
 		extend: {
 			colors: {
 				dark: "#161615",
+				darkish: "#2a2a29",
 				primary: "#daa144",
 				down: "#cf4935",
 				up: "#199a51",
@@ -34,7 +35,13 @@ module.exports = {
 		},
 	},
 	variants: {
-		extend: {},
+		extend: {
+			ringWidth: ["focus-within"],
+			ringColor: ["focus-within"],
+			ringOpacity: ["focus-within"],
+		},
 	},
-	plugins: [],
+	plugins: [
+		require("@tailwindcss/forms"),
+	],
 };
