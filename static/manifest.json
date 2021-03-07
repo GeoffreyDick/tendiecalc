@@ -1,0 +1,26 @@
+{
+  "short_name": "TendieCalc",
+  "name": "TendieCalc",
+  "description": "A calculator to quantify your future tendies",
+  "lang": "en-US",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "minimal-ui",
+  "background_color": "#161615",
+  "theme_color": "#daa144",
+  "screenshots": [
+    {
+      "src": "screenshot-1.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    }
+  ]
+}
