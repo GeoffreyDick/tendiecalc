@@ -149,7 +149,7 @@ export default {
 
 	server: {
 		input: config.server.input(),
-		output: { ...config.server.output(), sourcemap },
+		output: { ...config.server.output(), sourcemap, exports: "default" },
 		plugins: [
 			replace({
 				preventAssignment: true,
