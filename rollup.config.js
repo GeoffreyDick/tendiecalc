@@ -37,7 +37,7 @@ const globalCSSWatchFiles = ["postcss.config.js", "tailwind.config.js", "src/glo
 // Workaround for https://github.com/sveltejs/sapper/issues/1266
 const onwarn = (warning, _onwarn) => (warning.code === "CIRCULAR_DEPENDENCY" && /[/\\]@sapper[/\\]/.test(warning.message)) || console.warn(warning.toString());
 
-export default {
+module.exports = {
 	client: {
 		input: config.client.input(),
 		output: { ...config.client.output(), sourcemap },
@@ -149,7 +149,7 @@ export default {
 
 	server: {
 		input: config.server.input(),
-		output: { ...config.server.output(), sourcemap, exports: "default" },
+		output: { ...config.server.output(), sourcemap },
 		plugins: [
 			replace({
 				preventAssignment: true,
