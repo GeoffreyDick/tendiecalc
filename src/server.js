@@ -16,4 +16,4 @@ const app = Express()
 		if (err) console.log("error", err);
 	});
 
-export default app;
+module.exports = app;
