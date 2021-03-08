@@ -1,15 +1,16 @@
 <script>
-	import ExampleComponent from "../components/ExampleComponent.svelte";
+  import Position from "../components/Position.svelte";
+  import Results from "../components/Results.svelte";
+  import { currentPrice, memePrice } from "../stores/store.js";
 </script>
 
-<style>
-	.centerer {
-		@apply flex-1 flex flex-col items-center justify-center bg-dark;
-	}
-</style>
-
-<div class:centerer={true}> <!-- Here's how you could extract conditional class groups with @apply -->
-	<ExampleComponent
-		title="🍗 TendieCalc"
-		paragraph="How many tendies???" />
+<div class="container max-w-7xl py-24">
+  <Position />
+  <div class="py-24 grid grid-cols-2 gap-16">
+    <Results title="Tendies for 🧻🙌" pricePerShare={$currentPrice} />
+    <Results title="Tendies for 💎🙌" pricePerShare={$memePrice} />
+  </div>
 </div>
+
+<style>
+</style>

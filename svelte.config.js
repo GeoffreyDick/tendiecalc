@@ -5,6 +5,7 @@ const createPreprocessors = ({ sourceMap }) => [
 	sveltePreprocess({
 		sourceMap,
 		defaults: {
+			script: "typescript",
 			style: "postcss",
 		},
 		postcss,

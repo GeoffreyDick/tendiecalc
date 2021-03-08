@@ -1,14 +1,26 @@
 import { spawn } from "child_process";
 import { performance } from "perf_hooks";
+import alias from "@rollup/plugin-alias";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
 import commonjs from "@rollup/plugin-commonjs";
+import typescript from "@rollup/plugin-typescript";
 import svelte from "rollup-plugin-svelte";
 import babel from "@rollup/plugin-babel";
 import colors from "kleur";
 import { terser } from "rollup-plugin-terser";
 import config from "sapper/config/rollup";
 import pkg from "./package.json";
+
+// Alias definitions
+const aliases = alias({
+	resolve: [".svelte", ".js"], // optional, by default this will just look for .js files or folders
+	entries: [
+		{ find: "@", replacement: "src" },
+		{ find: "components", replacement: "src/components" },
+		{ find: "types", replacement: "src/types" },
+	],
+});
 
 const { createPreprocessors } = require("./svelte.config.js");
 
@@ -30,7 +42,9 @@ export default {
 		input: config.client.input(),
 		output: { ...config.client.output(), sourcemap },
 		plugins: [
+			aliases,
 			replace({
+				preventAssignment: true,
 				"process.browser": true,
 				"process.env.NODE_ENV": JSON.stringify(mode),
 			}),
@@ -47,6 +61,10 @@ export default {
 				dedupe: ["svelte"],
 			}),
 			commonjs({
+				sourceMap: !!sourcemap,
+			}),
+			typescript({
+				noEmitOnError: !dev,
 				sourceMap: !!sourcemap,
 			}),
 
@@ -134,6 +152,7 @@ export default {
 		output: { ...config.server.output(), sourcemap },
 		plugins: [
 			replace({
+				preventAssignment: true,
 				"process.browser": false,
 				"process.env.NODE_ENV": JSON.stringify(mode),
 			}),
@@ -165,6 +184,7 @@ export default {
 		plugins: [
 			resolve(),
 			replace({
+				preventAssignment: true,
 				"process.browser": true,
 				"process.env.NODE_ENV": JSON.stringify(mode),
 			}),

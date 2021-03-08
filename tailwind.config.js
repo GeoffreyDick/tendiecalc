@@ -1,4 +1,5 @@
 const { tailwindExtractor } = require("tailwindcss/lib/lib/purgeUnusedStyles");
+const tailwindForms = require("@tailwindcss/forms");
 
 module.exports = {
 	purge: {
@@ -42,6 +43,6 @@ module.exports = {
 		},
 	},
 	plugins: [
-		require("@tailwindcss/forms"),
+		tailwindForms,
 	],
 };
