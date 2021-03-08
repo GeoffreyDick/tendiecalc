@@ -19,9 +19,11 @@
 
 <div class="flex flex-col space-y-4">
   <h2 class="text-3xl font-bold">{title}</h2>
-  <div class="rounded-xl p-16 bg-darkish flex flex-col space-y-4">
+  <div
+    class="rounded-xl p-8 lg:p-16 bg-darkish flex flex-col space-y-2 lg:space-y-4 overflow-hidden"
+  >
     <h3 class="text-primary font-medium tracking-wider">Pre-Tax Value</h3>
-    <span class="text-primary text-5xl font-bold"
+    <span class="text-primary text-3xl lg:text-5xl font-bold"
       >{USD(preTaxValue).format()}</span
     >
     {#if currency(profitLoss).value > 0}
@@ -30,11 +32,11 @@
       >
     {:else if currency(profitLoss).value < 0}
       <span class="text-down font-medium tracking-wider"
-        >&blacktriangledown; {profitLoss.format()} %10,000</span
+        >&blacktriangledown; {profitLoss.format()} ({percentChange}%)</span
       >
     {:else}
       <span class="text-white opacity-50 font-medium tracking-wider"
-        >&#8210; {profitLoss} %10,000</span
+        >&#8210; {profitLoss.format()} ({percentChange}%)</span
       >
     {/if}
   </div>

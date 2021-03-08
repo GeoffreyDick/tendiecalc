@@ -4,6 +4,7 @@
 
 <script>
   import { stores } from "@sapper/app";
+  import AppFooter from "../components/AppFooter.svelte";
   import AppNav from "../components/AppNav.svelte";
 
   // You may not want to use `segment`, but it is passed for the time being and will
@@ -26,4 +27,7 @@
 </svelte:head>
 
 <AppNav />
-<slot />
+<main class="flex-grow">
+  <slot />
+</main>
+<AppFooter />

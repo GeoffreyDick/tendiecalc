@@ -23,15 +23,15 @@ module.exports = {
 	theme: {
 		container: {
 			center: true,
-			padding: "2rem",
+			padding: "1rem",
 		},
 		extend: {
 			colors: {
 				dark: "#161615",
 				darkish: "#2a2a29",
 				primary: "#daa144",
-				down: "#cf4935",
-				up: "#199a51",
+				down: "#ed6a53",
+				up: "#26ae56",
 			},
 		},
 	},
