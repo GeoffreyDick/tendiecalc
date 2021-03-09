@@ -2,6 +2,7 @@
   export let name!: string;
   export let label!: string;
   export let prefix: string | undefined = undefined;
+  export let options: string[];
   export let value!: any;
 
   const onInput = (e: any) => (value = e.target.value);
@@ -14,12 +15,12 @@
   >
     {#if prefix}
       <div
-        class="h-full px-2 lg:px-4 rounded-l-xl bg-primary text-dark text-sm font-semibold flex flex-col justify-around"
+        class="h-full px-2 lg:px-4 rounded-l-xl bg-primary text-sm text-dark font-semibold flex flex-col justify-around"
       >
         {prefix}
       </div>
     {/if}
-    <input
+    <select
       {name}
       type="number"
       {value}
@@ -27,6 +28,10 @@
         ? 'rounded-r-xl'
         : 'rounded-xl'} w-full h-full border-none bg-darkish text-primary focus:ring-transparent"
       on:input={onInput}
-    />
+    >
+      {#each options as option}
+        <option value={option}>{option}</option>
+      {/each}
+    </select>
   </div>
 </div>

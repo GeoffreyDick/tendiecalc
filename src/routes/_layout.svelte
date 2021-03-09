@@ -27,7 +27,7 @@
 </svelte:head>
 
 <AppNav />
-<main class="flex-grow">
+<main class="flex-grow overflow-hidden">
   <slot />
 </main>
 <AppFooter />

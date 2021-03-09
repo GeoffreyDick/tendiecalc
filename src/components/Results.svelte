@@ -1,20 +1,32 @@
 <script lang="ts">
   import currency from "currency.js";
-  import { shares, taxRate, totalCost } from "../stores/store.js";
+  import {
+    shares,
+    taxRate,
+    totalCost,
+    localCurrency,
+  } from "../stores/store.js";
+  import { exchangeRates } from "../stores/exchange-rates.js";
 
   const USD = (value: currency | number) =>
-    currency(value, { symbol: "$", precision: 2 });
+    currency(value, { symbol: "USD ", precision: 2 });
 
   export let title!: string;
   export let pricePerShare!: number;
+  export let spendOnText!: string;
 
   $: preTaxValue = currency(pricePerShare).multiply($shares);
-  $: postTaxValue = currency(preTaxValue).multiply(1 - $taxRate / 100);
+  $: postTaxValue = currency(profitLoss).multiply(1 - $taxRate / 100);
   $: profitLoss = currency(preTaxValue).subtract($totalCost);
   $: percentChange = currency(profitLoss, { symbol: "" })
     .divide($totalCost)
     .multiply(100)
     .format();
+  $: localCurrencyString = $localCurrency.toString();
+  $: currencyOptions = {
+    symbol: `${$localCurrency} `,
+    precision: 2,
+  };
 </script>
 
 <div class="flex flex-col space-y-4">
@@ -24,25 +36,45 @@
   >
     <h3 class="text-primary font-medium tracking-wider">Pre-Tax Value</h3>
     <span class="text-primary text-3xl lg:text-5xl font-bold"
-      >{USD(preTaxValue).format()}</span
+      >{currency(preTaxValue, currencyOptions)
+        .multiply($exchangeRates.rates[localCurrencyString])
+        .format()}</span
     >
     {#if currency(profitLoss).value > 0}
       <span class="text-up font-medium tracking-wider"
-        >&blacktriangle; {profitLoss.format()} ({percentChange}%)</span
+        >&blacktriangle; {currency(profitLoss, currencyOptions)
+          .multiply($exchangeRates.rates[localCurrencyString])
+          .format()} ({percentChange}%)</span
       >
     {:else if currency(profitLoss).value < 0}
       <span class="text-down font-medium tracking-wider"
-        >&blacktriangledown; {profitLoss.format()} ({percentChange}%)</span
+        >&blacktriangledown; {currency(profitLoss, currencyOptions)
+          .multiply($exchangeRates.rates[localCurrencyString])
+          .format()} ({percentChange}%)</span
       >
     {:else}
       <span class="text-white opacity-50 font-medium tracking-wider"
-        >&#8210; {profitLoss.format()} ({percentChange}%)</span
+        >&#8210; {currency(profitLoss, currencyOptions)
+          .multiply($exchangeRates.rates[localCurrencyString])
+          .format()} ({percentChange}%)</span
       >
     {/if}
   </div>
-  <span class="text-sm italic"
-    >At a {$taxRate}% tax rate, you will need to set aside {profitLoss
-      .multiply($taxRate / 100)
-      .format()} of your tendies for taxes.</span
+  <span class="italic leading-relaxed"
+    >At a {$taxRate}% tax rate, you will need to set aside
+    <span class="text-white font-medium tracking-wide opacity-75"
+      >{currency(profitLoss, currencyOptions)
+        .multiply($taxRate / 100)
+        .multiply($exchangeRates.rates[localCurrencyString])
+        .format()}</span
+    >
+    of your tendies for taxes, leaving you with
+    <span class="text-white font-medium tracking-wide opacity-75">
+      {currency(preTaxValue, currencyOptions)
+        .subtract(currency(profitLoss).multiply($taxRate / 100))
+        .multiply($exchangeRates.rates[localCurrencyString])
+        .format()}
+    </span>
+    to spend on {spendOnText}</span
   >
 </div>
