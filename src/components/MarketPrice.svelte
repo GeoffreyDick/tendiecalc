@@ -73,9 +73,9 @@
   let interval: any = null;
 
   async function fetchIntraday() {
-    $intraday = await axios(
-      `https:api.tendiecalc.com/api/marketstack-intraday?ticker=${symbol}`
-    ).then(({ data }) => data);
+    $intraday = await axios(`marketstack-intraday?ticker=${symbol}`, {
+      baseURL: "https:api.tendiecalc.com/api/",
+    }).then(({ data }) => data);
   }
 
   function numberWithCommas(x) {
@@ -84,11 +84,12 @@
 
   onMount(async () => {
     // Fetch data from symbol
-    ticker = await axios(
-      `https:api.tendiecalc.com/api/marketstack-ticker?ticker=${symbol}`
-    ).then(({ data }) => data);
+    ticker = await axios(`marketstack-ticker?ticker=${symbol}`, {
+      baseURL: "https:api.tendiecalc.com/api/",
+    }).then(({ data }) => data);
     exchange = await axios(
-      `https:api.tendiecalc.com/api/marketstack-exchange?exchange=${ticker.stock_exchange.mic}`
+      `marketstack-exchange?exchange=${ticker.stock_exchange.mic}`,
+      { baseURL: "https:api.tendiecalc.com/api/" }
     ).then(({ data }) => data);
     // Fetch intraday every 1min
     fetchIntraday();
