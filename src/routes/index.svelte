@@ -8,18 +8,19 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import Position from "../components/Position.svelte";
+  import Setup from "../components/Setup.svelte";
   import Results from "../components/Results.svelte";
   import {
     notMemePrice,
     shares,
     averageCost,
     localCurrency,
-    currentPrice,
   } from "../stores/store.js";
   import { exchangeRates } from "../stores/exchange-rates.js";
+  import { intraday } from "../stores/intraday.js";
 
   import axios, { AxiosPromise } from "axios";
+  import MarketPrice from "../components/MarketPrice.svelte";
 
   export let query;
 
@@ -47,21 +48,37 @@
 </script>
 
 <svelte:head>
-  <title>TendieCalc | Tendies for 💎🙌 vs 🧻🙌</title>
+  <title>TendieCalc | 💎🙌 vs. 🧻🙌 gains</title>
+  <meta
+    name="description"
+    content="Are you a Gamestop 🦍? Thinking you might have 🧻🙌? TendieCalc will show you your potential 💎🙌 tendies."
+  />
+  <link rel="canonical" href="https://tendiecalc.com" />
+  <meta property="og:title" content="TendieCalc | 💎🙌 vs 🧻🙌 gains" />
+  <meta
+    property="og:description"
+    content="Are you a Gamestop 🦍? Thinking you might have 🧻🙌? TendieCalc will show you your potential 💎🙌 tendies."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tendiecalc.com" />
+  <meta property="og:image" content="/og_img.png" />
 </svelte:head>
 
-<div class="container max-w-7xl">
-  <Position />
+<div class="container max-w-7xl py-12">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 py-8 lg:py-24">
+    <MarketPrice />
+    <Setup />
+  </div>
   <div class="py-8 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-16">
-    <Results
-      title="Tendies for 🧻🙌"
-      pricePerShare={$currentPrice}
-      spendOnText="student loans, credit card minimum payments, and presents for your wife's boyfriend."
-    />
     <Results
       title="Tendies for 💎🙌"
       pricePerShare={$notMemePrice}
       spendOnText="Lambos, questionable tattoos, and charity."
+    />
+    <Results
+      title="Tendies for 🧻🙌"
+      pricePerShare={$intraday.last || $intraday.close}
+      spendOnText="student loans, credit card minimum payments, and presents for your wife's boyfriend."
     />
   </div>
 </div>

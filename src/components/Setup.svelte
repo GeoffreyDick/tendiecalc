@@ -11,10 +11,10 @@
   import InputSelect from "./inputs/InputSelect.svelte";
 </script>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-  <section class="py-8 lg:py-24 space-y-8">
-    <h1 class="text-3xl font-bold">Setup</h1>
-    <div class="grid grid-cols-2 gap-4 md:gap-8">
+<section>
+  <h2 class="text-3xl font-bold mb-4 lg:mb-8">Setup</h2>
+  <div class="space-y-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
       <InputNumber
         name="notMemePrice"
         label="What is NOT A MEME?"
@@ -36,7 +36,6 @@
         bind:value={$averageCost}
       />
     </div>
-
     <div class="grid grid-cols-2 gap-4 md:gap-8">
       <InputNumber
         name="taxRate"
@@ -46,10 +45,10 @@
       />
       <InputSelect
         name="localCurrency"
-        label="Your local currency"
+        label="Your currency"
         options={Object.keys($exchangeRates.rates)}
         bind:value={$localCurrency}
       />
     </div>
-  </section>
-</div>
+  </div>
+</section>

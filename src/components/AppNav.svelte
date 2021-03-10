@@ -12,11 +12,11 @@
 </script>
 
 <nav
-  class="container max-w-7xl pt-4 lg:pt-12 flex flex-col space-y-4 sm:flex-row justify-between sm:items-end"
+  class="container max-w-7xl pt-4 lg:pt-12 flex flex-col space-y-4 sm:flex-row justify-between sm:items-center"
 >
-  <h1 class="text-3xl font-bold">TendieCalc</h1>
+  <h1 class="text-3xl lg:text-5xl font-bold">TendieCalc</h1>
   <div class="flex flex-col space-y-2">
-    <span class="text-sm text-right opacity-75">
+    <span class="text-sm text-left opacity-75">
       Add this URL to your bookmarks to save your setup
     </span>
     <div class="ml-auto flex w-full">

@@ -7,21 +7,54 @@
 @import "tailwindcss/utilities";
 /* @import "./utilities.pcss"; */
 
-html,
-body {
-  @apply bg-dark text-primary;
-}
+@layer base {
+  @font-face {
+    font-family: Inconsolata;
+    src: url(static/fonts/Inconsolata-VariableFont_wdthwght.ttf) format("ttf");
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: Inconsolata;
+    src: url(static/fonts/Inconsolata-VariableFont_wdthwght.ttf) format("ttf");
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: Inconsolata;
+    src: url(static/fonts/Inconsolata-VariableFont_wdthwght.ttf) format("ttf");
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: Inconsolata;
+    src: url(static/fonts/Inconsolata-VariableFont_wdthwght.ttf) format("ttf");
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: Inconsolata;
+    src: url(static/fonts/Inconsolata-VariableFont_wdthwght.ttf) format("ttf");
+    font-weight: 800;
+  }
+  @font-face {
+    font-family: Inconsolata;
+    src: url(static/fonts/Inconsolata-VariableFont_wdthwght.ttf) format("ttf");
+    font-weight: 900;
+  }
 
-/* Hide input[type=number] arrows */
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+  html,
+  body {
+    @apply bg-dark text-primary font-monospace font-medium tracking-wide;
+  }
 
-/* Hide input[type=number] arrows */
-/* Firefox */
-input[type="number"] {
-  -moz-appearance: textfield;
+  /* Hide input[type=number] arrows */
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Hide input[type=number] arrows */
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }

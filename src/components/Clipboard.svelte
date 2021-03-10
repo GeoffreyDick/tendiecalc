@@ -46,7 +46,7 @@
         duration: 2000,
         easing: quintOut,
       }}
-      class="w-full h-full absolute top-0 left-0 bg-up text-dark font-semibold px-4 py-3 rounded-r-xl text-center"
+      class="w-full h-full absolute top-0 left-0 bg-up text-dark font-semibold px-3 py-2 rounded-r-xl text-center"
     >
       <svg
         class="w-6 h-6"
@@ -63,7 +63,7 @@
   {/if}
   <button
     on:click={copy}
-    class="bg-primary hover:bg-opacity-90 focus:outline-none transition-all duration-100 text-dark font-semibold px-4 py-3 rounded-r-xl"
+    class="bg-primary hover:bg-opacity-90 focus:outline-none transition-all duration-100 text-dark font-semibold px-3 py-2 rounded-r-xl"
     ><svg
       class="w-6 h-6"
       fill="currentColor"

@@ -25,6 +25,9 @@ module.exports = {
 			center: true,
 			padding: "1rem",
 		},
+		fontFamily: {
+			monospace: ["Inconsolata", "monospace"],
+		},
 		extend: {
 			colors: {
 				dark: "#161615",

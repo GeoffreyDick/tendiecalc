@@ -35,7 +35,7 @@
     class="rounded-xl p-8 lg:p-16 bg-darkish flex flex-col space-y-2 lg:space-y-4 overflow-hidden"
   >
     <h3 class="text-primary font-medium tracking-wider">Pre-Tax Value</h3>
-    <span class="text-primary text-3xl lg:text-5xl font-bold"
+    <span class="text-primary text-3xl lg:text-4xl font-bold"
       >{currency(preTaxValue, currencyOptions)
         .multiply($exchangeRates.rates[localCurrencyString])
         .format()}</span
