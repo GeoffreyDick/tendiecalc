@@ -100,9 +100,9 @@
   });
 
   $: dayChange = currency($intraday.last).subtract($intraday.close);
-  $: percentChange = numberWithCommas(
+  $: percentChange = (
     currency(dayChange, { precision: 4 }).divide($intraday.close).value * 100
-  );
+  ).toFixed(2);
   $: currencyOptions = {
     symbol: "USD ",
     precision: 2,
@@ -111,6 +111,7 @@
 
 <section>
   <h2 class="text-3xl font-bold mb-4 lg:mb-8">Market Price</h2>
+  {JSON.stringify($intraday)}
   <div
     class="bg-darkish rounded-xl p-8 lg:p-16 flex flex-col space-y-4 justify-center"
   >

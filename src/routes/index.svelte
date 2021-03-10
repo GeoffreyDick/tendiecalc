@@ -48,12 +48,15 @@
 </script>
 
 <svelte:head>
+  <!-- HTML Meta Tags -->
   <title>TendieCalc | 💎🙌 vs. 🧻🙌 gains</title>
   <meta
     name="description"
     content="Are you a Gamestop 🦍? Thinking you might have 🧻🙌? TendieCalc will show you your potential 💎🙌 tendies."
   />
   <link rel="canonical" href="https://tendiecalc.com" />
+
+  <!-- Facebook Meta Tags -->
   <meta property="og:title" content="TendieCalc | 💎🙌 vs 🧻🙌 gains" />
   <meta
     property="og:description"
@@ -61,7 +64,18 @@
   />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://tendiecalc.com" />
-  <meta property="og:image" content="/og_img.png" />
+  <meta property="og:image" content="https://tendiecalc.com/og_img.png" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="twitter:domain" content="tendiecalc.com" />
+  <meta property="twitter:url" content="https://tendiecalc.com" />
+  <meta name="twitter:title" content="TendieCalc | 💎🙌 vs 🧻🙌 gains" />
+  <meta
+    name="twitter:description"
+    content="Are you a Gamestop 🦍? Thinking you might have 🧻🙌? TendieCalc will show you your potential 💎🙌 tendies."
+  />
+  <meta name="twitter:image" content="https://tendiecalc.com/og_img.png" />
 </svelte:head>
 
 <div class="container max-w-7xl py-12">
