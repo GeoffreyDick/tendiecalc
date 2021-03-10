@@ -74,7 +74,7 @@
 
   async function fetchIntraday() {
     $intraday = await axios(`marketstack-intraday?ticker=${symbol}`, {
-      baseURL: "https:api.tendiecalc.com/api/",
+      baseURL: "https://tendiecalc-api-geoffdick.vercel.app/",
     }).then(({ data }) => data);
   }
 
@@ -85,11 +85,11 @@
   onMount(async () => {
     // Fetch data from symbol
     ticker = await axios(`marketstack-ticker?ticker=${symbol}`, {
-      baseURL: "https:api.tendiecalc.com/api/",
+      baseURL: "https://tendiecalc-api-geoffdick.vercel.app/",
     }).then(({ data }) => data);
     exchange = await axios(
       `marketstack-exchange?exchange=${ticker.stock_exchange.mic}`,
-      { baseURL: "https:api.tendiecalc.com/api/" }
+      { baseURL: "https://tendiecalc-api-geoffdick.vercel.app/" }
     ).then(({ data }) => data);
     // Fetch intraday every 1min
     fetchIntraday();

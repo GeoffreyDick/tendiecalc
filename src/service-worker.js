@@ -43,7 +43,7 @@ self.addEventListener("fetch", (event) => { // eslint-disable-line no-shadow,no-
 	if (!url.protocol.startsWith("http")) return;
 
 	// Ignore dev server requests
-	// if (url.hostname === self.location.hostname && url.port !== self.location.port) return;
+	if (url.hostname === self.location.hostname && url.port !== self.location.port) return;
 
 	// Always serve static files and bundler-generated assets from cache
 	if (url.host === self.location.host && cached.has(url.pathname)) {
