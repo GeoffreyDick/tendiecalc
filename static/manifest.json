@@ -31,13 +31,13 @@
     }
   ],
   "start_url": "/",
-  "display": "minimal-ui",
+  "display": "fullscreen",
   "background_color": "#161615",
   "theme_color": "#daa144",
   "screenshots": [
     {
-      "src": "screenshot-1.png",
-      "sizes": "1280x720",
+      "src": "screenshot.png",
+      "sizes": "2560x1440",
       "type": "image/png"
     }
   ]

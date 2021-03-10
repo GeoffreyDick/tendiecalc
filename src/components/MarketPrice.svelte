@@ -74,22 +74,18 @@
 
   async function fetchIntraday() {
     $intraday = await axios(`marketstack-intraday?ticker=${symbol}`, {
-      baseURL: "https://tendiecalc-api-geoffdick.vercel.app/",
+      baseURL: "https://tendiecalc-api.vercel.app/api/",
     }).then(({ data }) => data);
-  }
-
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   onMount(async () => {
     // Fetch data from symbol
     ticker = await axios(`marketstack-ticker?ticker=${symbol}`, {
-      baseURL: "https://tendiecalc-api-geoffdick.vercel.app/",
+      baseURL: "https://tendiecalc-api.vercel.app/api/",
     }).then(({ data }) => data);
     exchange = await axios(
       `marketstack-exchange?exchange=${ticker.stock_exchange.mic}`,
-      { baseURL: "https://tendiecalc-api-geoffdick.vercel.app/" }
+      { baseURL: "https://tendiecalc-api.vercel.app/api/" }
     ).then(({ data }) => data);
     // Fetch intraday every 1min
     fetchIntraday();
@@ -112,7 +108,6 @@
 
 <section>
   <h2 class="text-3xl font-bold mb-4 lg:mb-8">Market Price</h2>
-  {JSON.stringify($intraday)}
   <div
     class="bg-darkish rounded-xl p-8 lg:p-16 flex flex-col space-y-4 justify-center"
   >
